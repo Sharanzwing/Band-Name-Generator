@@ -1,0 +1,38 @@
+<%- include("partials/header.ejs") %>
+
+<div class="card">
+  <div class="badge">
+    <span class="badge-icon">🎸</span>
+    <span>Stage-Ready Name Studio</span>
+  </div>
+
+  <% if (typeof locals.adjective !== 'undefined' && typeof locals.noun !== 'undefined') { %>
+    <div class="result-container">
+      <span class="result-label">Generated Band Name</span>
+      <h1 class="band-name">
+        <span class="word-adj"><%= adjective %></span>
+        <span class="word-noun"><%= noun %></span>
+      </h1>
+      <p class="subtitle">Your next headliner moniker is ready to rock.</p>
+    </div>
+  <% } else { %>
+    <div class="hero-container">
+      <h1 class="hero-title">
+        Find Your Sound.<br>
+        <span class="gradient-text">Name Your Band.</span>
+      </h1>
+      <p class="subtitle">
+        Click below to instantly craft unique, memorable band names for your next album, gig, or garage jam.
+      </p>
+    </div>
+  <% } %>
+
+  <form action="/submit" method="POST" class="generator-form">
+    <button type="submit" class="generate-btn">
+      <span class="btn-sparkle">⚡</span>
+      <span><%= (typeof locals.adjective !== 'undefined') ? 'Generate Another' : 'Generate Name' %></span>
+    </button>
+  </form>
+</div>
+
+<%- include("partials/footer.ejs") %>
